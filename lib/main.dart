@@ -1,7 +1,17 @@
+import 'package:assignment_by_omar/routes/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async{
+  await GetStorage.init();
+  runApp(
+    GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: Routes.search,
+      getPages: Routes.routes,
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
