@@ -41,6 +41,8 @@ dependencies:
   http: ^0.13.5
   cached_network_image: 3.2.3
   carousel_slider: ^4.2.1
+  dotted_line: ^3.1.0
+  flutter_polygon: ^0.3.0+2
 
 dev_dependencies:
   flutter_test:
