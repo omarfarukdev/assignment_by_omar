@@ -28,6 +28,12 @@ class SearchController extends GetxController{
   bool hasNextPage = true;
   bool isLoadMoreRunning = false;
   String nextUrl='';
+  RxString deImage=''.obs;
+  String deProductName='';
+  double decurrent_charge=0;
+  double deselling_price=0;
+  double deprofit=0;
+  String description='';
   @override
   void onInit() {
     // TODO: implement onInit
@@ -59,5 +65,17 @@ class SearchController extends GetxController{
       allProduct.addAll(fetchedPosts);
     }
     print("Text Omar ${allProduct.length}");
+  }
+  void productDetails(String slug) async{
+    final response = await http.get(Uri.parse("https://panel.supplyline.network/api/product-details/$slug"));
+    var res =json.decode(response.body);
+    deImage.value=res['data']['image'];
+    print("object ${deImage.value}");
+    decurrent_charge=res['data']['charge']['current_charge'];
+    deselling_price=res['data']['charge']['selling_price'];
+    deprofit=res['data']['charge']['profit'];
+    deProductName=res['data']['product_name'].toString();
+    description=res['data']['description'];
+    print("call ${res['data']['product_name'].toString()}");
   }
 }

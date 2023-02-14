@@ -72,7 +72,9 @@ class SearchPage extends StatelessWidget {
                           //ProductList(results: product,controller:searchController)
                       GestureDetector(
                         onTap: (){
+                          searchController.productDetails(product["slug"]);
                           Get.toNamed(Routes.details);
+                          print("object ${product["slug"]}");
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -97,8 +99,8 @@ class SearchPage extends StatelessWidget {
                                       height: 120,
                                       width: 100,
                                     ),
-                                    const Text(
-                                      "Lays Classic Family Chips",
+                                     Text(
+                                      "${product["product_name"]}",
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 14,
